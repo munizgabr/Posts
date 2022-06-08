@@ -25,7 +25,11 @@ function delete_post(info_btn) {
 
     fetch('https://jsonplaceholder.typicode.com/posts/' + info_btn, {
         method: 'DELETE',
-    });
+    }).then((json) => {
+        console.log(json)
+        alert("ARE YOU SURE YOU WANT TO DELETE?");
+        location.href = '../home-page/index.html';
+    })
 }
 
 function draw_btn_delete(id) {
@@ -35,6 +39,7 @@ function draw_btn_delete(id) {
     btn_delete.addEventListener('click', function() {
         delete_post(id);
     });
+
     return btn_delete;
 }
 
@@ -50,7 +55,7 @@ function draw_btn_save(id) {
 
 function draw_post(post) {
     const postDiv = document.createElement("div");
-
+    postDiv.className = "principal"
     postDiv.appendChild(draw_title(post.title));
     postDiv.appendChild(draw_body(post.body));
     postDiv.appendChild(draw_btn_save(post.id));
