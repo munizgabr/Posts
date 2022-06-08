@@ -17,15 +17,32 @@ function draw_hr() {
     return hr;
 }
 
-function edit_post() {
-    window.location = '../post/post.html'
+function edit_post(id) {
+    window.location = '../post/post.html?id=' + id;
 }
 
+function delete_post(info_btn) {
 
-function draw_btn() {
+    fetch('https://jsonplaceholder.typicode.com/posts/' + info_btn, {
+        method: 'DELETE',
+    });
+}
+
+function draw_btn_delete(id) {
+    const btn_delete = document.createElement("button");
+    btn_delete.innerHTML = "Deletar";
+    btn_delete.addEventListener('click', function() {
+        delete_post(id);
+    });
+    return btn_delete;
+}
+
+function draw_btn_save(id) {
     const btn_edit = document.createElement("button");
-    btn_edit.innerHTML = "button";
-    btn_edit.onclick = edit_post;
+    btn_edit.innerHTML = "Editar";
+    btn_edit.addEventListener('click', function() {
+        edit_post(id);
+    });
     return btn_edit;
 }
 
@@ -34,7 +51,8 @@ function draw_post(post) {
 
     postDiv.appendChild(draw_title(post.title));
     postDiv.appendChild(draw_body(post.body));
-    postDiv.appendChild(draw_btn());
+    postDiv.appendChild(draw_btn_save(post.id));
+    postDiv.appendChild(draw_btn_delete(post.id));
     postDiv.appendChild(draw_hr());
 
     document.getElementById('main').appendChild(postDiv);
