@@ -1,3 +1,10 @@
+function draw_img(link) {
+    var img = document.createElement("img");
+    img.src=link;
+    img.height= 30;
+    return img;
+}
+
 function draw_title(text) {
     const title = document.createElement("div");
     title.innerText = text;
@@ -35,22 +42,26 @@ function delete_post(info_btn) {
 
 function draw_btn_delete(id) {
     const btn_delete = document.createElement("button");
-    btn_delete.innerHTML = "Delete";
     btn_delete.className = "btn_del";
     btn_delete.addEventListener('click', function () {
         delete_post(id);
     });
 
+    //add icon
+    btn_delete.appendChild(draw_img('../img/remove.png'));
     return btn_delete;
 }
 
 function draw_btn_save(id) {
     const btn_edit = document.createElement("button");
-    btn_edit.innerHTML = "Edit";
+
     btn_edit.className = "btn_edit"
     btn_edit.addEventListener('click', function () {
         edit_post(id);
     });
+
+    //add icon
+    btn_edit.appendChild(draw_img('../img/edit.png'));
     return btn_edit;
 }
 
