@@ -39,23 +39,28 @@ function save_post(id) {
     const body = document.getElementById('txt_body').value;
     const userId = 1;
 
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            id,
-            title,
-            body,
-            userId
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-        .then((response) => response.json())
-        .then((json) => {
-            console.log(json)
-            alert("POST EDITED SUCCESSFULLY");
-            location.href = '../home-page/index.html';
-        });
+    if (title && body) {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                id,
+                title,
+                body,
+                userId
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => {
+                console.log(json)
+                alert("POST EDITED SUCCESSFULLY");
+                location.href = '../home-page/index.html';
+            });
+
+    } else {
+        alert("Please, insert title and content");
+    }
 }
 
