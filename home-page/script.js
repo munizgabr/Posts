@@ -35,7 +35,7 @@ function delete_post(info_btn) {
 
 function draw_btn_delete(id) {
     const btn_delete = document.createElement("button");
-    btn_delete.innerHTML = "Deletar";
+    btn_delete.innerHTML = "Delete";
     btn_delete.className = "btn_del";
     btn_delete.addEventListener('click', function () {
         delete_post(id);
@@ -46,7 +46,7 @@ function draw_btn_delete(id) {
 
 function draw_btn_save(id) {
     const btn_edit = document.createElement("button");
-    btn_edit.innerHTML = "Editar";
+    btn_edit.innerHTML = "Edit";
     btn_edit.className = "btn_edit"
     btn_edit.addEventListener('click', function () {
         edit_post(id);
