@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.btn_edit:hover {
+    background-color: green;
+    transition: 0.7s;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.btn_del {
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 5px;
+}
