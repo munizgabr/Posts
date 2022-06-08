@@ -2,6 +2,9 @@
 function draw_create_post() {
     const postDiv = document.createElement("div");
 
+    postDiv.appendChild(draw_text("CREATE POST"));
+    postDiv.appendChild(draw_br());
+
     postDiv.appendChild(draw_text("Post Title*"));
     postDiv.appendChild(draw_input_title(""));
 
@@ -46,7 +49,11 @@ function create_post() {
         },
     })
         .then((response) => response.json())
-        .then((json) => console.log(json));
+        .then((json) => {
+            console.log(json);
+            alert("POST CREATED SUCCESSFULLY");
+            location.href = '../home-page/index.html';
+        });
 }
 
 
