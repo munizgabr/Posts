@@ -23,20 +23,21 @@ function edit_post(id) {
 
 function delete_post(info_btn) {
 
-    fetch('https://jsonplaceholder.typicode.com/posts/' + info_btn, {
-        method: 'DELETE',
-    }).then((json) => {
-        console.log(json)
-        alert("ARE YOU SURE YOU WANT TO DELETE?");
-        location.href = '../home-page/index.html';
-    })
+    if (confirm("ARE YOU SURE YOU WANT TO DELETE?")) {
+        fetch('https://jsonplaceholder.typicode.com/posts/' + info_btn, {
+            method: 'DELETE',
+        }).then((json) => {
+            alert('POST DELETED SUCCESSFULLY')
+        })
+    }
+
 }
 
 function draw_btn_delete(id) {
     const btn_delete = document.createElement("button");
     btn_delete.innerHTML = "Deletar";
     btn_delete.className = "btn_del";
-    btn_delete.addEventListener('click', function() {
+    btn_delete.addEventListener('click', function () {
         delete_post(id);
     });
 
@@ -47,7 +48,7 @@ function draw_btn_save(id) {
     const btn_edit = document.createElement("button");
     btn_edit.innerHTML = "Editar";
     btn_edit.className = "btn_edit"
-    btn_edit.addEventListener('click', function() {
+    btn_edit.addEventListener('click', function () {
         edit_post(id);
     });
     return btn_edit;
