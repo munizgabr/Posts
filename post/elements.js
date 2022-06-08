@@ -11,12 +11,14 @@ function draw_text(text) {
 function draw_input_title(text) {
     const title = document.createElement("input");
     title.id = 'txt_title';
+    title.className = 'post_title';
     title.value = text;
     return title;
 }
 
 function draw_input_body(text) {
     const body = document.createElement("textarea");
+    body.className = 'post_body'
     body.id = 'txt_body';
     body.value = text;
     return body;
